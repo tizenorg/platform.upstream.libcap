@@ -4,12 +4,11 @@ Release:        1
 License:        BSD-3-Clause ; GPL-2.0
 Summary:        Library for Capabilities (linux-privs) Support
 Url:            https://sites.google.com/site/fullycapable/
-Group:          System/Libraries
+Group:          Base/Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  libattr-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define debug_package_requires libcap2 = %{version}-%{release}
 
 %description
@@ -23,7 +22,7 @@ done automatically by the kernel.
 %package devel
 License:        BSD-3-Clause ; GPL-2.0
 Summary:        Development files for libcap
-Group:          Development/Libraries/C and C++
+Group:          Development/Libraries
 Requires:       glibc-devel
 Requires:       libcap = %{version}
 
@@ -40,7 +39,7 @@ using libcap.
 %package progs
 License:        BSD-3-Clause ; GPL-2.0
 Summary:        Libcap utility programs
-Group:          System/Filesystems
+Group:          Base/File Systems
 
 %description progs
 This package contains utility programs handling capabilities via
@@ -69,6 +68,7 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 
 %files
 %defattr(-,root,root)
+%license License
 %attr(755,root,root) /%{_lib}/libcap.so.*
 
 %files progs
