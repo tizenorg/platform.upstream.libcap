@@ -7,6 +7,7 @@ Url:            https://sites.google.com/site/fullycapable/
 Group:          Base/Libraries
 Source:         %{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	libcap.manifest
 BuildRequires:  fdupes
 BuildRequires:  libattr-devel
 %define debug_package_requires libcap2 = %{version}-%{release}
@@ -47,6 +48,7 @@ libcap.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 # lib=%{_lib} make %{?_smp_mflags} COPTFLAG="%{optflags}"
@@ -67,17 +69,20 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 %postun -p /sbin/ldconfig
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license License
 %attr(755,root,root) /%{_lib}/libcap.so.*
 
 %files progs
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %{_mandir}/man1/*
 %{_mandir}/man8/*
 /sbin/*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc License README CHANGELOG
 %{_includedir}/sys/capability.h
