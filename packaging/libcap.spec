@@ -1,7 +1,7 @@
 Name:           libcap
 Version:        2.22
 Release:        1
-License:        BSD-3-Clause ; GPL-2.0
+License:        BSD-3-Clause and GPL-2.0
 Summary:        Library for Capabilities (linux-privs) Support
 Url:            https://sites.google.com/site/fullycapable/
 Group:          Base/Libraries
@@ -21,9 +21,7 @@ capabilities within setuid binaries. If you use patches, this can be
 done automatically by the kernel.
 
 %package devel
-License:        BSD-3-Clause ; GPL-2.0
 Summary:        Development files for libcap
-Group:          Development/Libraries
 Requires:       glibc-devel
 Requires:       libcap = %{version}
 
@@ -37,12 +35,11 @@ draft 15 capabilities.
 Install libcap-devel if you want to develop or compile applications
 using libcap.
 
-%package progs
-License:        BSD-3-Clause ; GPL-2.0
+%package tools
 Summary:        Libcap utility programs
-Group:          Base/File Systems
+Provides:       %{name}-progs
 
-%description progs
+%description tools
 This package contains utility programs handling capabilities via
 libcap.
 
@@ -74,7 +71,7 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 %license License
 %attr(755,root,root) /%{_lib}/libcap.so.*
 
-%files progs
+%files tools
 %manifest %{name}.manifest
 %defattr(-,root,root)
 %{_mandir}/man1/*
@@ -84,7 +81,6 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 %files devel
 %manifest %{name}.manifest
 %defattr(-,root,root)
-%doc License README CHANGELOG
 %{_includedir}/sys/capability.h
 %{_libdir}/*.so
 %{_mandir}/man3/*
