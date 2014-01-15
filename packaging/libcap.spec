@@ -1,11 +1,11 @@
 Name:           libcap
-Version:        2.22
+Version:        2.24
 Release:        1
 License:        BSD-3-Clause and GPL-2.0
 Summary:        Library for Capabilities (linux-privs) Support
 Url:            https://sites.google.com/site/fullycapable/
 Group:          Base/Libraries
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Source1001: 	libcap.manifest
 BuildRequires:  fdupes
@@ -48,11 +48,10 @@ libcap.
 cp %{SOURCE1001} .
 
 %build
-# lib=%{_lib} make %{?_smp_mflags} COPTFLAG="%{optflags}"
 lib=%{_lib} make %{?_smp_mflags} DEBUG="-g %{optflags}"
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=%{buildroot}/%{_lib} MANDIR=%{buildroot}%{_mandir} RAISE_SETFCAP=no
+make install DESTDIR=%{buildroot} LIBDIR=%{buildroot}/%{_lib} MANDIR=%{buildroot}%{_mandir} PKGCONFIGDIR=%{buildroot}%{_datadir}/pkgconfig RAISE_SETFCAP=no
 # remove unneeded files
 rm -f %{buildroot}/%{_lib}/*.*a
 # move *.so file to libdir and relink
@@ -83,6 +82,7 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 %defattr(-,root,root)
 %{_includedir}/sys/capability.h
 %{_libdir}/*.so
+%{_datadir}/pkgconfig/*.pc
 %{_mandir}/man3/*
 
 %changelog
