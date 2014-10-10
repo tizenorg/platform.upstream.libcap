@@ -1,3 +1,6 @@
+* Fri Oct 10 2014 John L. Whiteman <john.l.whiteman@intel.com> accepted/tizen/generic/20140312.114958-1-g431cdd7
+- Fixed TC-1588. Install libcap to /usr/sbin
+
 * Wed Jan 15 2014 Maciej Wereski <m.wereski@partner.samsung.com> upstream/2.24@71163a1
 - Update to 2.24
 

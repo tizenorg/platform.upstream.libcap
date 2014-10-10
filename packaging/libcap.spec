@@ -51,7 +51,7 @@ cp %{SOURCE1001} .
 lib=%{_lib} make %{?_smp_mflags} DEBUG="-g %{optflags}"
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR=%{buildroot}/%{_lib} MANDIR=%{buildroot}%{_mandir} PKGCONFIGDIR=%{buildroot}%{_libdir}/pkgconfig RAISE_SETFCAP=no
+make install prefix=%{_prefix} DESTDIR=%{buildroot} LIBDIR=%{buildroot}/%{_lib} MANDIR=%{buildroot}%{_mandir} PKGCONFIGDIR=%{buildroot}%{_libdir}/pkgconfig RAISE_SETFCAP=no
 # remove unneeded files
 rm -f %{buildroot}/%{_lib}/*.*a
 # move *.so file to libdir and relink
@@ -75,7 +75,7 @@ ln -s /%{_lib}/libcap.so.2 %{buildroot}%{_libdir}/libcap.so
 %defattr(-,root,root)
 %{_mandir}/man1/*
 %{_mandir}/man8/*
-/sbin/*
+%{_prefix}/sbin/*
 
 %files devel
 %manifest %{name}.manifest
