@@ -1,7 +1,7 @@
 Name:           libcap
 Version:        2.24
 Release:        1
-License:        BSD-3-Clause and GPL-2.0
+License:        BSD-2.0 and GPL-2.0
 Summary:        Library for Capabilities (linux-privs) Support
 Url:            https://sites.google.com/site/fullycapable/
 Group:          Base/Libraries
