@@ -185,10 +185,10 @@ extern char *_libcap_strdup(const char *text);
  * place them here too.
  */
 
-extern int capset(cap_user_header_t header, cap_user_data_t data);
-extern int capget(cap_user_header_t header, const cap_user_data_t data);
-extern int capgetp(pid_t pid, cap_t cap_d);
-extern int capsetp(pid_t pid, cap_t cap_d);
+__attribute__ ((visibility ("default"))) extern int capset(cap_user_header_t header, cap_user_data_t data);
+__attribute__ ((visibility ("default"))) extern int capget(cap_user_header_t header, const cap_user_data_t data);
+__attribute__ ((visibility ("default"))) extern int capgetp(pid_t pid, cap_t cap_d);
+__attribute__ ((visibility ("default"))) extern int capsetp(pid_t pid, cap_t cap_d);
 
 /* prctl based API for altering character of current process */
 #define PR_GET_KEEPCAPS    7
